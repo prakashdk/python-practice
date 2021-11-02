@@ -5,7 +5,7 @@
 
 ### Synopsis
 
-> find [-t] [-n] [-u] [expression]
+> python find.py [OPTIONS] PATH
 
 ### Options
 
@@ -25,9 +25,11 @@
 -uid uname
      The same thing as -user uname for compatibility with GNU find.  GNU find imposes a restriction that uname is numeric, while find(1) does not.
 
--size n[ckMGTP]
-     True if the file's size, rounded up, in 512-byte blocks is n.  If n is followed by a c, then the primary is true if
-     the file's size is n bytes (characters).  Similarly if n is followed by a scale indicator then the file's size is compared to n scaled as:
+-size n[ckMG]
+     True if the file's size, rounded up, in 512-byte blocks is n.  
+     If n is followed by a c, then the primary is true if the file's size is n bytes (characters).  
+     Similarly if n is followed by a scale indicator then the file's size is compared to n scaled as:
+     c       bytes
      k       kilobytes (1024 bytes)
      M       megabytes (1024 kilobytes)
      G       gigabytes (1024 megabytes)
