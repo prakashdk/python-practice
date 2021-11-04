@@ -29,12 +29,10 @@
      True if the file's size, rounded up, in 512-byte blocks is n.  
      If n is followed by a c, then the primary is true if the file's size is n bytes (characters).  
      Similarly if n is followed by a scale indicator then the file's size is compared to n scaled as:
-     c       bytes
-     k       kilobytes (1024 bytes)
+     B       bytes
+     K       kilobytes (1024 bytes)
      M       megabytes (1024 kilobytes)
      G       gigabytes (1024 megabytes)
-     T       terabytes (1024 gigabytes)
-     P       petabytes (1024 terabytes)
 
 -mtime n[smhdw]
      If no units are specified, this primary evaluates to true if the difference between the file last modification time and the time find was started, rounded up to the next full 24-hour period, is n 24-hour periods.
