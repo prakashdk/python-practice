@@ -2,6 +2,7 @@ import os
 from fnmatch import fnmatch
 from size import Size
 from timeoption import Time
+import pwd
 
 
 class Option:
@@ -34,13 +35,15 @@ class Option:
         self.set_match(filetypes[type](self.file))
 
     def match_by_user(self, user):
+        
         """Function for '-user' option. Matches the files by user """
         # To be fixed.
         # Problem : Can't find user in windows
+        
+        self.set_match(pwd.getpwuid(os.stat("sample.txt").st_uid).pw_name==user)
+        #According to google, above line works on linux by importing 'pwd' module
 
         
-        ###self.set_match(pwd.getpwuid(os.stat("sample.txt").st_uid).pw_name)==user) 
-        #According to google, above line works on linux by importing 'pwd' module
 
     def match_by_uid(self, uid):
         """Function for '-uid' option. Matches the files by uid """
