@@ -37,7 +37,10 @@ class Option:
         """Function for '-user' option. Matches the files by user """
         # To be fixed.
         # Problem : Can't find user in windows
-        pass
+
+        
+        ###self.set_match(pwd.getpwuid(os.stat("sample.txt").st_uid).pw_name)==user) 
+        #According to google, above line works on linux by importing 'pwd' module
 
     def match_by_uid(self, uid):
         """Function for '-uid' option. Matches the files by uid """
