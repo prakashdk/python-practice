@@ -13,14 +13,8 @@ Synopsis
 """
 
 
-def get_arguments():
-    """To check if the arguments provided or not and returns it"""
-    if len(sys.argv) > 2:
-        return sys.argv[1:]
-    raise Exception("No arguments provided")
-
-
 def tolist(dir):
+    """converts recursive sub directories to a list especially for 'os.walk' function"""
     all_files = []
     for basedir, subdirs, files in dir:
         for subdir in subdirs:
@@ -31,6 +25,7 @@ def tolist(dir):
 
 
 def get_files(dir):
+    """Gets all files and sub directories in a specified directory"""
     if os.path.isdir(dir):
         return tolist(os.walk(dir))
     elif os.path.isfile(dir):
@@ -41,6 +36,7 @@ def get_files(dir):
 
 
 def is_match_file(file, options):
+    """Validates and matches the files and sub dirs by user provided options Using 'Option' class"""
     opt = Option(file)
     option_lookup = {
         "type": opt.match_by_type,
@@ -63,8 +59,9 @@ def find_files(files, options):
 
 
 def print_files(files):
+    """Just prints the filtered files per line"""
     for file in files:
-        print(file, os.stat(file).st_mtime)
+        print(file)
 
 
 def find(path, **options):
@@ -79,17 +76,17 @@ def find(path, **options):
 @click.option("-name", default="", help="pattern for matching files or dirs")
 @click.option("-size", default="", help="match the files with size")
 @click.option("-user", default="", help="match the files with user")
-@click.option("-uid", default="", help="match the files with user id", type=int)
+@click.option("-uid", default=0, help="match the files with user id", type=int)
 @click.option("-mtime", default="", help="match the files with modification time")
 @click.option("-ctime", default="", help="match the files with creation time")
-def main(type, name, path, size, uid, user, mtime):
+def main(type, name, path, size, uid, user, mtime, ctime):
     for dir in path:
         find(dir, type=type, name=name, size=size.upper(),
-             user=user, uid=uid, mtime=mtime)
+             user=user, uid=uid, mtime=mtime, ctime=ctime)
 
 
 if __name__ == "__main__":
-    # try:
-    main()
-    # except Exception as e:
-    # print(e)
+    try:
+        main()
+    except Exception as e:
+        print(e)
