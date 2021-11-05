@@ -63,7 +63,6 @@ def print_files(files):
     for file in files:
         print(file)
 
-
 def find(path, **options):
     files = get_files(path)
     match_files = find_files(files, options)
