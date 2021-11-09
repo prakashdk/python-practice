@@ -1,3 +1,4 @@
 /src/__pycache__
 /src/samplefiles
+/src/.pytest_cache
 sample.py

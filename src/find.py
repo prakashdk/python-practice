@@ -1,5 +1,3 @@
-import sys
-from typing import DefaultDict
 import click
 import os
 from option import Option
